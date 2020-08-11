@@ -1,0 +1,71 @@
+What is an API?
+- application programming interface
+- a server that creates an http interface for interfacing with some data
+- Usually a server on some remote machine that dictates how another application can interact with some data
+- Basic operations like Create Read Update Destroy (CRUD)
+
+REST
+- most popular api design pattern
+- very blurry 
+- combines db resources route paths and http verbs to allow applications to describe what action they are trying to perform
+- popularized when SaaS products started offering APIs for integrations
+- works with basic data models
+
+Node.js and APIs
+- build for high concurrent APIs that are not cpu intensive
+- when kept async, node can handle a high amt of concurrent requests
+- not great for cpu intensive work like math and models
+- open source
+
+Express
+- the standard api for nodejs
+- handles all the tedious tasks like managing sockets route matching error handling and more
+- open source and has a big community
+
+MongoDB
+- go to non-relational db for nodejs, easy to get started and scales as well
+- open source and tons of hosting solutions
+- ORM / ODM and other libs are some of the best for any db
+
+Middleware
+tldr - list of functions that execute before your controllers
+- basically stuff that sits between the request and response\
+- allow you to execute functions on an incoming request with guaranteed order
+
+REST routes with Express
+- express has a robust routing machine 
+
+Schemas for a schemaless db?
+- always use a schema for models and mongoose makes it easy
+- mongodb has a support for schema but mongoose is better
+- we can create models for each rest resource we want to expose via the API
+
+Schemas
+- look at the schemas in the resources folder
+
+Controllers and routes
+- controllers are middleware with intent on returning some data
+- think of it as a final middleware in the stack for a request. 
+    -  There is no intent to proceed to another function after a controller
+- implement logic that interacts with db models
+- can generalize controllers to work for many different models
+
+Using models
+- C - models.create()
+- R - model.find(), model.findOne(), model.findbyId()
+- U - module.update(), module.findbyIdandUpdate(), etc
+- D - module.remove(), module.findbyIdandRemove(), etc
+
+Auth basics
+- can never truly protect an API but having auth will make it a bit safer
+- Authentication is controlling if an incoming request can proceed or not
+- authorization is controlling if an authenticated request has the correct permissions to access a source
+- Identification is determining who the requester is
+
+JWT Authentication
+- a bearer token strategy that allows the API to be stateless with user auth
+- created by a combination of secrets on the API and a payload like a user object
+- Must be sent with every request where the API will then try to verify the token created with expected secrets
+- After a successful verification JWT payload is accessible to the server. Can be used for authorization and Identification
+
+
